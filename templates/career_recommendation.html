@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Recommendation | CareerNova</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 30px 15px;
+            color: #222;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #263b80;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        h3 {
+            color: #263b80;
+            margin-top: 25px;
+        }
+
+        .skill {
+            display: inline-block;
+            width: 42%;
+            margin: 10px 0;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        select {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #263b80;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #19285c;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 18px;
+            background: #e8f0ff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #263b80;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Career Recommendation</h1>
+        <p>Select your skills and interests to discover a suitable career.</p>
+
+        <form method="POST">
+            <h3>1. Select your skills</h3>
+
+            <label class="skill">
+                <input type="checkbox" name="Excel"> Excel
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="SQL"> SQL
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="Python"> Python
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="PowerBI"> Power BI
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="HTML"> HTML
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="CSS"> CSS
+            </label>
+
+            <label class="skill">
+                <input type="checkbox" name="JavaScript"> JavaScript
+            </label>
+
+            <h3>2. Choose your interest</h3>
+
+            <select name="Interest" required>
+                <option value="Analytics">Data Analytics</option>
+                <option value="Web">Web Development</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="Development">Software Development</option>
+            </select>
+
+            <button type="submit">Recommend My Career</button>
+        </form>
+
+        
+{% if recommended_career %}
+    <div class="result">
+        <h3>Your Recommended Career</h3>
+        <h2>{{ recommended_career }}</h2>
+        <p>This recommendation is based on your selected skills and interests.</p>
+    </div>
+
+    <div class="result">
+        <h3>Your Selected Skills</h3>
+        {% if selected_skills %}
+            <p>{{ selected_skills | join(", ") }}</p>
+        {% else %}
+            <p>You have not selected any skills yet.</p>
+        {% endif %}
+    </div>
+
+    <div class="result">
+        <h3>Required Skills</h3>
+        <p>{{ required_skills | join(", ") }}</p>
+    </div>
+
+    
+<div class="result">
+    <h3>Skills to Learn Next</h3>
+
+    {% if missing_skills %}
+        {% for skill in missing_skills %}
+            <div style="background: white; padding: 15px; margin: 12px 0; border-radius: 8px; text-align: left;">
+                <h4>{{ skill }}</h4>
+
+                {% if skill == "Excel" %}
+                    <p>Learn formulas, sorting, filtering and Pivot Tables.</p>
+                    <a href="https://support.microsoft.com/excel" target="_blank" rel="noopener noreferrer">Start Learning Excel →</a>
+
+                {% elif skill == "PowerBI" %}
+                    <p>Learn charts, data modeling and dashboards.</p>
+                    <a href="https://learn.microsoft.com/training/powerplatform/power-bi/" target="_blank" rel="noopener noreferrer">Start Learning Power BI →</a>
+
+                {% elif skill == "SQL" %}
+                    <p>Learn SELECT, WHERE, GROUP BY and JOIN.</p>
+                    <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer">Start Learning SQL →</a>
+
+                {% elif skill == "Python" %}
+                    <p>Learn Python basics, functions and Pandas.</p>
+                    <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener noreferrer">Start Learning Python →</a>
+
+                {% elif skill == "HTML" %}
+                    <p>Learn HTML tags, forms and page structure.</p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content" target="_blank" rel="noopener noreferrer">Start Learning HTML →</a>
+
+                {% elif skill == "CSS" %}
+                    <p>Learn styling, layouts and responsive design.</p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics" target="_blank" rel="noopener noreferrer">Start Learning CSS →</a>
+
+                {% elif skill == "JavaScript" %}
+                    <p>Learn variables, functions and events.</p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting" target="_blank" rel="noopener noreferrer">Start Learning JavaScript →</a>
+                    {% elif skill == "Java" %}
+    <p>Learn Java basics, classes, objects and methods.</p>
+    <a href="https://dev.java/learn/" target="_blank" rel="noopener noreferrer">Start Learning Java →</a>
+
+{% elif skill == ".NET" %}
+    <p>Learn C# basics and .NET application development.</p>
+    <a href="https://learn.microsoft.com/en-us/dotnet/" target="_blank" rel="noopener noreferrer">Start Learning .NET →</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Great! You selected all the listed skills for this career.</p>
+    {% endif %}
+</div>
+
+{% endif %}
+
+
+        <a class="back" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova - Career Intelligence</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172b4d;
+        }
+
+        header {
+            background: #142b4a;
+            color: white;
+            padding: 22px 8%;
+        }
+
+        header h1 {
+            color: #68e0cf;
+            margin: 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+        }
+
+        .hero p {
+            color: #596579;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #087f8c;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            width: 250px;
+            box-shadow: 0 4px 15px #dbe3ee;
+        }
+
+        .card h3 {
+            color: #087f8c;
+        }
+        
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 35px auto;
+    max-width: 1000px;
+}
+
+.dashboard-card {
+    display: block;
+    box-sizing: border-box;
+    width: 280px;
+    padding: 25px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #dce3ed;
+    text-decoration: none;
+    color: #24344d;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px #c5d3e5;
+}
+
+.dashboard-card h2 {
+    color: #244b80;
+}
+
+.dashboard-card p {
+    line-height: 1.6;
+}
+
+.dashboard-card span {
+    display: inline-block;
+    margin-top: 10px;
+    color: #244b80;
+    font-weight: bold;
+}
+
+.get-started-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 24px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.get-started-btn:hover {
+    background: #1d4ed8;
+}
+
+.dashboard-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    padding: 35px;
+    border-radius: 16px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #1d4ed8;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.hero {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    padding: 35px;
+    border-radius: 16px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #1d4ed8;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+section.hero {
+    background: #dbeafe !important;
+    padding: 35px !important;
+    border-radius: 16px !important;
+    margin: 20px 0 !important;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-6px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18)
+}
+
+.dashboard-card {
+    transition: all 0.3s ease;
+}
+
+a.dashboard-card {
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a.dashboard-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.career-search {
+    background: #ffffff;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.career-search input {
+    width: 65%;
+    max-width: 400px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.career-search button {
+    padding: 12px 20px;
+    margin-left: 8px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.career-search button:hover {
+    background: #1d4ed8;
+}
+
+#searchResult {
+    margin-top: 15px;
+    color: #1d4ed8;
+    font-weight: bold;
+}
+header {
+    background: linear-gradient(135deg, #172554, #4338ca, #7c3aed);
+    color: white;
+    padding: 60px 25px;
+    text-align: center;
+    border-radius: 0 0 28px 28px;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.get-started-btn {
+    display: inline-block;
+    background: white;
+    color: #4338ca;
+    padding: 13px 25px;
+    margin-top: 15px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.get-started-btn:hover {
+    background: #e0e7ff;
+    transform: translateY(-3px);
+}
+
+.site-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+}
+/* Navigation Bar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #4338ca;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #172554;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #7c3aed;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+   
+
+<nav class="navbar">
+    <a href="/" class="brand">
+        <img src="{{ url_for('static', filename='careernova-logo.png') }}"
+             alt="CareerNova Logo">
+        <span>CareerNova</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/careers">Careers</a>
+        <a href="/skill-gap">Skill Analysis</a>
+        <a href="/roadmap">Roadmap</a>
+    </div>
+</nav>
+
+<header>
+    
+<header>
+    <img src="{{ url_for('static', filename='careernova-logo.png') }}"
+         alt="CareerNova Logo"
+         class="site-logo">
+
+    <h1>🚀 CareerNova</h1>
+
+    <p>Your Career. Your Skills. Your Future.</p>
+
+    <p>
+        Discover careers, identify your skill gaps,
+        and follow a personalized learning roadmap
+        to become job-ready.
+    </p>
+
+    <a href="#dashboard-cards" class="get-started-btn">
+        Get Started →
+    </a>
+</header>
+
+
+    <main>
+        <section class="hero">
+            <h2>Discover the Skills Behind Your Dream Career</h2>
+
+            <p>
+                Explore career opportunities, understand required skills,
+                and plan your next learning step.
+            </p>
+
+            
+            
+<div class="dashboard-cards"
+    id="dashboard-cards">
+
+    <a href="/careers" class="dashboard-card">
+        <h2>Explore Careers</h2>
+        <p>Discover careers and the skills they require.</p>
+        <span>Explore Now →</span>
+    </a>
+
+    <a href="/skill-gap" class="dashboard-card">
+        <h2>Skill Gap Analysis</h2>
+        <p>Find out which skills you need to learn next.</p>
+        <span>Analyze Skills →</span>
+    </a>
+
+    <a href="/roadmap-options" class="dashboard-card">
+        <h2>Learning Roadmap</h2>
+        <p>Follow a step-by-step learning path.</p>
+        <span>View Roadmap →</span>
+    </a>
+    
+    <a href="/career-recommendation" class="dashboard-card">
+        <h2>🤖 AI Career Recommendation</h2>
+        <p>Select your skills and interests to discover a suitable career using Machine Learning.</p>
+        <span>Find My Career →</span>
+    </a>
+    
+    <a href="/job-matcher" class="dashboard-card">
+        <h2>🎯 Job Description Matcher</h2>
+        <p>Compare your current skills with a job description and identify skills you still need to learn.</p>
+        <span>Check Job Match →</span>
+    </a>
+    <a href="/resume-analyzer" class="dashboard-card">
+    <h2>📄 AI Resume Analyzer</h2>
+    <p>Upload your resume, analyze your skills and check your job match.</p>
+    <span>Analyze Resume →</span>
+</a>
+<a href="/chatbot" class="dashboard-card">
+    <h2>🤖 AI Career Chatbot</h2>
+    <p>Ask AI about careers, skills, interviews and learning roadmaps.</p>
+    <span>Chat with AI →</span>
+</a>
+
+
+
+</div>
+
+
+        </section>
+        
+
+    <section class="career-search">
+    <h2>Find Your Dream Career</h2>
+    <p>Search for a career to explore your opportunities.</p>
+
+    <form onsubmit="searchCareer(event)">
+        <input
+            type="text"
+            id="careerSearch"
+            placeholder="Search Data Analyst, Web Developer, Software Developer..."
+        >
+
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="searchResult"></div>
+</section>
+
+
+
+        
+    </main>
+    
+
+<script>
+function searchCareer(event) {
+    event.preventDefault();
+
+    const searchText = document
+        .getElementById("careerSearch")
+        .value.toLowerCase().trim();
+
+    const result = document.getElementById("searchResult");
+
+    const careers = [
+        {
+            name: "Data Analyst",
+            keywords: ["data analyst", "analyst"],
+            skills: "Excel, SQL, Python and Power BI",
+            link: "/roadmap"
+        },
+        {
+            name: "Web Developer",
+            keywords: ["web developer", "web development"],
+            skills: "HTML, CSS, JavaScript and Python",
+            link: "/web_roadmap"
+        },
+        {
+            name: "Data Scientist",
+            keywords: ["data scientist", "data science"],
+            skills: "Python, SQL, Statistics and Machine Learning",
+            link: "/data_scientist_roadmap"
+        },
+        {
+            name: "Software Developer",
+            keywords: ["software developer", "software development"],
+            skills: "Python, Java, SQL and .NET",
+            link: "/software_roadmap"
+        }
+    ];
+
+    if (searchText === "") {
+        result.textContent = "Please enter a career name.";
+        return;
+    }
+
+    const career = careers.find(item =>
+        item.keywords.some(keyword =>
+            keyword.includes(searchText) ||
+            searchText.includes(keyword)
+        )
+    );
+
+    if (career) {
+        result.innerHTML = `
+            <h3>${career.name}</h3>
+            <p><b>Required Skills:</b> ${career.skills}</p>
+            <a href="${career.link}">View Learning Roadmap →</a>
+        `;
+    } else {
+        result.textContent =
+            "Career not found. Try Data Analyst, Web Developer, Data Scientist or Software Developer.";
+    }
+}
+</script>
+</body>
+</html>
+
+</body>
+</html>

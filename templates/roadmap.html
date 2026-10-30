@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Roadmap | SkillPlus</title>
+
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fc;
+        margin: 0;
+        padding: 30px;
+        color: #222;
+    }
+    .subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+    h1 {
+        text-align: center;
+        color: #2563eb;
+    }
+
+    .intro {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .roadmap {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .step {
+        background: #f8faff;
+        padding: 18px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2563eb;
+    }
+
+    .step h2 {
+        color: #1d4ed8;
+        margin-top: 0;
+    }
+
+    .step label {
+        display: block;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+        accent-color: #2563eb;
+        margin-right: 8px;
+    }
+
+.progress-container {
+    background: #eff6ff;
+    padding: 18px;
+    margin: 25px auto;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.progress-container h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+#progress-text {
+    color: #374151;
+    font-size: 14px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #dbeafe;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+
+    .back {
+        display: inline-block;
+        text-align: center;
+        margin: 12px 8px 0 0;
+        padding: 10px 16px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+    .back:hover {
+        background: #1d4ed8;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <h1>Data Analytics Learning Roadmap</h1>
+    
+<p class="subtitle">
+    Follow these steps to start your Data Analyst journey.
+</p>
+
+     
+<div class="progress-container">
+    <h3>Your Learning Progress</h3>
+    <p id="progress-text">0 of 5 steps completed (0%)</p>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+</div>
+
+
+
+    <div class="roadmap">
+
+        <div class="step">
+            <h2>Step 1: Excel</h2>
+            <p>Learn formulas, sorting, filtering and data cleaning.</p>
+            <lable>
+                <input type="checkbox" class="roadmap-checkbox">Mark as completed 
+                </lable>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: SQL</h2>
+            <p>Learn SELECT, WHERE, GROUP BY, JOIN and subqueries.</p>
+            <lable>
+                <input type="checkbox" class="roadmap-checkbox">Mark as completed
+            </lable>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Python</h2>
+            <p>Learn Python basics, Pandas and data analysis.</p>
+            <label>
+                <input type="checkbox" class="roadmap-checkbox"> Mark as completed
+            </label>
+        </div>
+
+        <div class="step">
+            <h2>Step 4: Power BI</h2>
+            <p>Learn charts, data modelling and dashboards.</p>
+            <lable>
+            <input type="checkbox" class="roadmap-checkbox"> Mark as completed
+            </lable>
+            
+                
+        </div>
+
+        <div class="step">
+            <h2>Step 5: Projects</h2>
+            <p>Build real-world projects to practise your skills.</p>
+            <lable>
+            <input type="checkbox" class="roadmap-checkbox"> Mark as completed
+            </lable>
+
+        </div>
+
+    </div>
+    
+>
+
+
+   <div style="text-align: center; margin-top: 25px;">
+    <a class="back" href="/roadmap-options">
+    ← Back to Choose Your Learning Roadmap
+</a>
+    <a class="back" href="/">Back to Home</a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".roadmap-checkbox");
+    const progressText = document.getElementById("progress-text");
+    const progressFill = document.getElementById("progress-fill");
+
+    const storageKey = "careerNova-data-analytics-progress";
+
+    checkboxes.forEach(function (checkbox, index) {
+        checkbox.checked =
+            localStorage.getItem(storageKey + "-" + index) === "completed";
+
+        checkbox.addEventListener("change", function () {
+            localStorage.setItem(
+                storageKey + "-" + index,
+                checkbox.checked ? "completed" : "incomplete"
+            );
+            updateProgress();
+        });
+    });
+
+    function updateProgress() {
+        const total = checkboxes.length;
+        const completed = document.querySelectorAll(
+            ".roadmap-checkbox:checked"
+        ).length;
+
+        const percentage = total === 0
+            ? 0
+            : Math.round((completed / total) * 100);
+
+        progressText.innerText =
+            completed + " of " + total +
+            " steps completed (" + percentage + "%)";
+
+        progressFill.style.width = percentage + "%";
+    }
+
+    updateProgress();
+});
+</script>
+</body>
+</html>
+
+
+</body>
+</html>

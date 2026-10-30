@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Developer Roadmap - CareerNova</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            margin: 0;
+            padding: 30px;
+            color: #222;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #2563eb;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: #f8faff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .step label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .step p {
+            line-height: 1.6;
+        }
+
+        input[type="checkbox"] {
+            accent-color: #2563eb;
+            margin-right: 8px;
+        }
+
+        .progress-card {
+            background: #eff6ff;
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 14px;
+            background: #dbeafe;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .back-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .back {
+            display: inline-block;
+            margin: 0;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Software Developer Learning Roadmap</h1>
+
+    <p class="subtitle">
+        Follow these steps to start your software development journey.
+    </p>
+
+    <div class="progress-card">
+        <h2>Your Learning Progress</h2>
+        <p id="progress-text">0 of 5 steps completed (0%)</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="step">
+        <label><input type="checkbox" class="roadmap-checkbox">
+        Step 1: Learn Programming</label>
+        <p>Learn Python or Java basics, variables, loops, functions, and object-oriented programming.</p>
+    </div>
+
+    <div class="step">
+        <label><input type="checkbox" class="roadmap-checkbox">
+        Step 2: Learn SQL</label>
+        <p>Practice SELECT, WHERE, JOIN, GROUP BY, and database operations.</p>
+    </div>
+
+    <div class="step">
+        <label><input type="checkbox" class="roadmap-checkbox">
+        Step 3: Data Structures</label>
+        <p>Understand lists, arrays, dictionaries, searching, and sorting.</p>
+    </div>
+
+    <div class="step">
+        <label><input type="checkbox" class="roadmap-checkbox">
+        Step 4: Application Development</label>
+        <p>Learn Git basics, write clean code, test applications, and fix errors.</p>
+    </div>
+
+    <div class="step">
+        <label><input type="checkbox" class="roadmap-checkbox">
+        Step 5: Build a Software Project</label>
+        <p>Build, test, and document a small application for your portfolio.</p>
+    </div>
+
+    <div class="back-buttons">
+        <a class="back" href="/roadmap-options">
+    ← Back to Choose Your Learning Roadmap
+</a>
+        <a class="back" href="/">← Back to Home</a>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".roadmap-checkbox");
+    const progressText = document.getElementById("progress-text");
+    const progressFill = document.getElementById("progress-fill");
+
+    const storageKey = "careerNova-software-developer-progress";
+
+    checkboxes.forEach(function (checkbox, index) {
+        checkbox.checked =
+            localStorage.getItem(storageKey + "-" + index) === "completed";
+
+        checkbox.addEventListener("change", function () {
+            localStorage.setItem(
+                storageKey + "-" + index,
+                checkbox.checked ? "completed" : "incomplete"
+            );
+            updateProgress();
+        });
+    });
+
+    function updateProgress() {
+        const total = checkboxes.length;
+        const completed = document.querySelectorAll(
+            ".roadmap-checkbox:checked"
+        ).length;
+
+        const percentage = total === 0
+            ? 0
+            : Math.round((completed / total) * 100);
+
+        progressText.innerText =
+            completed + " of " + total +
+            " steps completed (" + percentage + "%)";
+
+        progressFill.style.width = percentage + "%";
+    }
+
+    updateProgress();
+});
+</script>
+
+</body>
+</html>
+

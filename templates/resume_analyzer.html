@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer - CareerNova</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fa;
+            margin: 0;
+            padding: 30px 15px;
+            color: #142b4a;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #142b4a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 8px;
+            font-weight: bold;
+        }
+
+        input[type="file"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #087f8c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #066570;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            color: #087f8c;
+            text-decoration: none;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f3f6fa;
+            border-radius: 10px;
+        }
+
+        .error {
+            color: #b42318;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Resume Analyzer</h1>
+        <p class="subtitle">
+            Upload your resume and discover your skills and job match.
+        </p>
+
+        <form method="POST" action="/resume-analyzer"
+              enctype="multipart/form-data">
+
+            <label for="resume">Upload Your Resume (PDF)</label>
+            <input type="file" id="resume" name="resume"
+                   accept=".pdf,application/pdf" required>
+
+            <label for="job_description">
+                Paste Job Description (Optional)
+            </label>
+            <textarea id="job_description"
+                      name="job_description"
+                      placeholder="Paste the job description here...">{{ job_description }}</textarea>
+
+            <button type="submit">Analyze My Resume</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if result %}
+        <div class="result">
+            <h2>Resume Analysis Results</h2>
+
+            <h3>Skills Found in Your Resume</h3>
+            {% if result.found_skills %}
+                <p>{{ result.found_skills | join(', ') }}</p>
+            {% else %}
+                <p>No supported skills detected.</p>
+            {% endif %}
+
+            {% if result.match_percentage is not none %}
+                <h3>Job Match: {{ result.match_percentage }}%</h3>
+
+                <h3>Matching Skills</h3>
+                <p>{{ result.matched_skills | join(', ') or 'None' }}</p>
+
+                <h3>Skills to Learn</h3>
+                <p>{{ result.missing_skills | join(', ') or 'None' }}</p>
+            {% else %}
+                <p>Paste a job description to calculate your job match.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <a class="back" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

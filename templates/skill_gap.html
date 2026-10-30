@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Gap Analysis | CareerNova</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f6fb;
+            color: #24344d;
+            padding: 30px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #244b80;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #dce3ed;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0;
+        }
+
+        button {
+            background-color: #244b80;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #244b80;
+        }
+        .score-card {
+    background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+    color: white;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.score-card:hover {
+    transform: translateY(-5px);
+}
+
+.score-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+#score-value {
+    font-size: 20px;
+    font-weight: bold;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: white;
+    padding: 12px 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #dce3ed;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #244b80;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: #244b80;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #7c3aed;
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+    <a href="/" class="brand">
+        <img src="{{ url_for('static', filename='careernova-logo.png') }}" alt="CareerNova Logo">
+        <span>CareerNova</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/careers">Careers</a>
+        <a href="/skill-gap">Skill Analysis</a>
+        <a href="/roadmap">Roadmap</a>
+    </div>
+</nav>
+    <h1>Skill Gap Analysis</h1>
+
+    <p class="intro">
+        Select the skills you already know to find out what you can learn next.
+    </p>
+
+    <div class="container">
+        
+<h2>Skill Gap Analysis</h2>
+
+<label for="career-select">Choose Your Career:</label>
+
+<select id="career-select" onchange="renderCareerSkills()">
+    <option value="Data Analyst">Data Analyst</option>
+    <option value="Web Developer">Web Developer</option>
+    <option value="Data Scientist">Data Scientist</option>
+    <option value="Software Developer">Software Developer</option>
+</select>
+
+<h3>Select the skills you already know:</h3>
+
+<div id="career-skills"></div>
+
+
+        <button type="button" onclick="analyzeSkills()">Analyze My Skills</button>
+        <div id="readiness-score" class="score-card">
+    <h3>🎯 Your Career Readiness Score</h3>
+    <p id="score-value">Analyze your skills to see your score.</p>
+</div>
+
+        <div id="result"></div>
+    </div>
+
+    <a class="back" href="/">Back to Home</a> 
+
+    <script>
+        
+const careerSkills = {
+    "Data Analyst": ["Excel", "SQL", "Python", "Power BI"],
+    "Web Developer": ["HTML", "CSS", "JavaScript", "Python"],
+    "Data Scientist": ["Python", "SQL", "Statistics", "Machine Learning"],
+    "Software Developer": ["Python", "Java", "SQL", ".NET"]
+};
+
+function renderCareerSkills() {
+    const career = document.getElementById("career-select").value;
+    const container = document.getElementById("career-skills");
+
+    container.innerHTML = careerSkills[career].map(skill => `
+        <label>
+            <input type="checkbox" value="${skill}">
+            ${skill}
+        </label><br>
+    `).join("");
+
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("score-value").innerText =
+        "Select your skills to see your score.";
+}
+renderCareerSkills();
+
+        function analyzeSkills() {
+            const career = document.getElementById("career-select").value;
+const skills = careerSkills[career];
+
+            const selected = Array.from(
+                document.querySelectorAll(
+                    'input[type="checkbox"]:checked'
+                )
+            ).map(item => item.value);
+            const totalSkills = skills.length;
+const completedSkills = selected.length;
+
+const score = Math.round(
+    (completedSkills / totalSkills) * 100
+);
+
+document.getElementById("score-value").innerText =
+    score + "% — Career Readiness Score";
+
+            const missing = skills.filter(
+                skill => !selected.includes(skill)
+            );
+
+            const result = document.getElementById("result");
+
+            if (missing.length === 0) {
+                result.innerHTML =
+                    "<h3>Great job!</h3><p>You selected all the listed skills.</p>";
+            } else {
+    
+
+result.innerHTML = "<h3>Skills to Learn Next</h3><p>"
+    + missing.join(", ")
+    + "</p><h3>Recommended Learning Resources</h3><ul>"
+    + missing.map(skill => {
+        const links = {
+            "SQL": "https://www.w3schools.com/sql/",
+            "Python": "https://www.w3schools.com/python/",
+            "Power BI": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+            "Excel": "https://support.microsoft.com/en-us/excel",
+            "HTML": "https://www.w3schools.com/html/",
+            "CSS": "https://www.w3schools.com/css/",
+            "JavaScript": "https://www.w3schools.com/js/",
+            "Statistics": "https://www.khanacademy.org/math/statistics-probability",
+            "Machine Learning": "https://www.w3schools.com/python/python_ml_getting_started.asp",
+            "Java": "https://www.w3schools.com/java/",
+            ".NET": "https://learn.microsoft.com/en-us/dotnet/"
+        };
+
+        return "<li><b>" + skill + ":</b> "
+            + (resources[skill] || "Learn the fundamentals of " + skill)
+            + ' <a href="' + (links[skill] || "#")
+            + '" target="_blank" rel="noopener noreferrer">Start Learning</a></li>';
+    }).join("")
+    + "</ul><p>Keep learning one skill at a time!</p>";
+
+            }
+        }
+        
+    </script>
+</body>
+</html>

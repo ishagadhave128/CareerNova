@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scientist Roadmap | SkillPlus</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fc;
+        margin: 0;
+        padding: 30px;
+        color: #222;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2563eb;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .step {
+        background: #f8faff;
+        border-left: 5px solid #2563eb;
+        padding: 18px;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+
+    .step h3 {
+        margin-top: 0;
+        color: #1d4ed8;
+    }
+
+    .step label {
+        display: block;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+        accent-color: #2563eb;
+        margin-right: 8px;
+    }
+
+    .links {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .back {
+        display: inline-block;
+        margin: 12px 8px 0 0;
+        padding: 10px 16px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+    .back:hover {
+        background: #1d4ed8;
+    }
+    
+.progress-card {
+    background: #eff6ff;
+    padding: 18px;
+    margin: 25px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #dbeafe;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Data Scientist Learning Roadmap</h1>
+        <p class="subtitle">Follow these steps to start your Data Science journey.</p>
+        <div class="progress-card">
+    <h2>Your Learning Progress</h2>
+    <p id="progress-text">0 of 15 steps completed (0%)</p>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+</div>
+
+        <div class="step">
+            <h3>Step 1: Learn Python</h3>
+            <label><input type="checkbox" class="roadmap-checkbox"> Variables and Data Types</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Loops and Functions</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> NumPy and Pandas</label>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Learn Statistics</h3>
+            <label><input type="checkbox" class="roadmap-checkbox"> Mean, Median and Mode</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Probability</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Data Distributions</label>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Learn SQL</h3>
+            <label><input type="checkbox" class="roadmap-checkbox"> Basic SQL Queries</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Joins and Subqueries</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Group By and Aggregate Functions</label>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Learn Machine Learning</h3>
+            <label><input type="checkbox" class="roadmap-checkbox"> Understand Machine Learning Basics</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Regression and Classification</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Model Evaluation</label>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: Build Projects</h3>
+            <label><input type="checkbox" class="roadmap-checkbox"> Analyze a Dataset</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Build a Prediction Model</label>
+            <label><input type="checkbox" class="roadmap-checkbox"> Present Your Findings</label>
+        </div>
+
+        
+<div style="text-align: center; margin-top: 25px;">
+    <a class="back" href="/roadmap-options">
+        ← Back to Choose Your Learning Roadmap
+    </a>
+
+    <a class="back" href="/">
+        Back to Home
+    </a>
+</div>
+
+    </div>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".roadmap-checkbox");
+    const progressText = document.getElementById("progress-text");
+    const progressFill = document.getElementById("progress-fill");
+
+    const storageKey = "careerNova-datascience-progress";
+
+    checkboxes.forEach(function (checkbox, index) {
+        checkbox.checked =
+            localStorage.getItem(storageKey + "-" + index) === "completed";
+
+        checkbox.addEventListener("change", function () {
+            localStorage.setItem(
+                storageKey + "-" + index,
+                checkbox.checked ? "completed" : "incomplete"
+            );
+
+            updateProgress();
+        });
+    });
+
+    function updateProgress() {
+        const total = checkboxes.length;
+        const completed = document.querySelectorAll(
+            ".roadmap-checkbox:checked"
+        ).length;
+
+        const percentage = total === 0
+            ? 0
+            : Math.round((completed / total) * 100);
+
+        progressText.innerText =
+            completed + " of " + total +
+            " steps completed (" + percentage + "%)";
+
+        progressFill.style.width = percentage + "%";
+    }
+
+    updateProgress();
+});
+</script>
+</body>
+</html>
+
+</body>
+</html>
